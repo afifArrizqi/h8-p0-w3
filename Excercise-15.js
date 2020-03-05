@@ -1,33 +1,41 @@
 function groupAnimals(animals) {
 	// you can only write your code here!
-	var arrBaru = [];
+	var newAnimals = [];
+	var character = [];
+	// GROUPING
 	for (var i = 0; i < animals.length; i++) {
-		if (animals[i][0] > arrBaru[arrBaru.length - 1][0]) arrBaru.push(animals[i]);
-		else arrBaru.unshift(animals[i]);
+		for (var j = 0; j <= character.length; j++) {
+			if (animals[i][0] === character[j]) {
+				newAnimals[j].push(animals[i]);
+				break;
+			} else if (j === character.length) {
+				character.push(animals[i][0]);
+				newAnimals.push([ animals[i] ]);
+				break;
+			}
+		}
 	}
-	return arrBaru;
+
+	// SHORTING
+	for (var i = 0; i < newAnimals.length; i++) {
+		for (var j = 0; j < newAnimals.length - 1; j++) {
+			var a = newAnimals[j][0][0];
+			var b = newAnimals[j + 1][0][0];
+			if (a > b) {
+				var temp = newAnimals[j];
+				newAnimals[j] = newAnimals[j + 1];
+				newAnimals[j + 1] = temp;
+			}
+		}
+	}
+	return newAnimals;
 }
 
 // TEST CASES
-// console.log(groupAnimals([ 'cacing', 'ayam', 'kuda', 'anoa', 'kancil' ]));
+console.log(groupAnimals([ 'cacing', 'ayam', 'kuda', 'anoa', 'kancil' ]));
 // [ ['ayam', 'anoa'], ['cacing'], ['kuda', 'kancil'] ]
 console.log(groupAnimals([ 'cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak' ]));
 // [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda', 'kancil'], ['unta'] ]
 
-// var kamus = 'abcdefghijklmnopqrstuvwxyz';
-// var kms = 'ack';
-// var arrBaru = [];
-// for (var i = 0; i < animals.length; i++) {
-// 	// console.log(`i : ${animals[i][0]}`);
-// 	var temp = [ animals[i] ];
-// 	if (arrBaru.length === 0) arrBaru.push(temp);
-// 	for (var j = 0; j < arrBaru.length; j++) {
-// 		// console.log(`j : ${arrBaru[j][0][0]}`);
-// 		// console.log(arrBaru[j][arrBaru[j].length]);
-// 		console.log(arrBaru.length);
-// 		if (animals[i][0] === arrBaru[j][0][0]) arrBaru[j][arrBaru[j].length] = animals[j];
-// 		else arrBaru.push(temp);
-// 		// console.log(arrBaru);
-// 	}
-// }
-// return arrBaru;
+//URUTKAN
+//LOOP UNTIL MEET DIFFERENT CHAR OR END OF LENGTH THEN PUSH
