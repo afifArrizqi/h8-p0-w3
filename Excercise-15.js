@@ -10,7 +10,7 @@ function groupAnimals(animals) {
 				break;
 			} else if (j === character.length) {
 				character.push(animals[i][0]);
-				newAnimals.push([ animals[i] ]);
+				newAnimals.push([animals[i]]);
 				break;
 			}
 		}
@@ -32,9 +32,9 @@ function groupAnimals(animals) {
 }
 
 // TEST CASES
-console.log(groupAnimals([ 'cacing', 'ayam', 'kuda', 'anoa', 'kancil' ]));
+console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil']));
 // [ ['ayam', 'anoa'], ['cacing'], ['kuda', 'kancil'] ]
-console.log(groupAnimals([ 'cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak' ]));
+console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak']));
 // [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda', 'kancil'], ['unta'] ]
 
 //URUTKAN
